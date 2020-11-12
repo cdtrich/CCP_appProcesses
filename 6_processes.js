@@ -87,12 +87,12 @@ const createChart = async () => {
 
 		let dimensions = {
 			width: size,
-			height: size * 0.33,
+			height: (size * 0.33) / 2,
 			margin: {
 				top: 15,
 				right: 15,
 				bottom: 60,
-				left: 60
+				left: 200
 			}
 		};
 
@@ -169,12 +169,25 @@ const createChart = async () => {
 		const xAxisGenerator = d3
 			.axisBottom()
 			.scale(xScale)
-			// .tickFormat(formatAxis)
-			.ticks();
+			.tickSize(-dimensions.boundedHeight - radius)
+			.tickFormat((d) => d.substr(0, 4));
 
 		const xAxis = selectOrCreate("g", "xAxis", bounds)
-			.call(xAxisGenerator)
-			.style("transform", `translate(0,${dimensions.boundedHeight}px)`);
+			// .style(
+			// 	"transform",
+			// 	`translate(${-radius * 1.5}px,${dimensions.boundedHeight}px)`
+			// )
+			.attr(
+				"transform",
+				"translate(" +
+					// dimensions.margin.left +
+					"0" +
+					"," +
+					(dimensions.boundedHeight + radius) +
+					")"
+			)
+			.transition()
+			.call(xAxisGenerator);
 
 		const yAxisGenerator = d3
 			.axisLeft()
@@ -248,45 +261,45 @@ const createChart = async () => {
 			//////////////////////////// details //////////////////////////////////////
 			///////////////////////////////////////////////////////////////////////////
 
-			var dataL = 0;
-			var legendOffset = radius * 10;
-			// var legendOffset = (dimensions.boundedWidth - 100) / dataType.length;
+			// var dataL = 0;
+			// var legendOffset = radius * 10;
+			// // var legendOffset = (dimensions.boundedWidth - 100) / dataType.length;
 
-			var legend = selectOrCreate("g", "legend", bounds)
-				.attr("width", dimensions.boundedWidth)
-				.attr("height", radius * 2);
+			// var legend = selectOrCreate("g", "legend", bounds)
+			// 	.attr("width", dimensions.boundedWidth)
+			// 	.attr("height", radius * 2);
 
-			var drawLegend = legend
-				.selectAll(".legend")
-				.data(dataType)
-				.enter()
-				.append("g")
-				.attr("class", "legend")
-				.attr("transform", function (d, i) {
-					if (i === 0) {
-						dataL = d.length + legendOffset;
-						return "translate(0,0)";
-					} else {
-						var newdataL = dataL;
-						dataL += d.length + legendOffset;
-						return "translate(" + newdataL + ",0)";
-					}
-				});
+			// var drawLegend = legend
+			// 	.selectAll(".legend")
+			// 	.data(dataType)
+			// 	.enter()
+			// 	.append("g")
+			// 	.attr("class", "legend")
+			// 	.attr("transform", function (d, i) {
+			// 		if (i === 0) {
+			// 			dataL = d.length + legendOffset;
+			// 			return "translate(0,0)";
+			// 		} else {
+			// 			var newdataL = dataL;
+			// 			dataL += d.length + legendOffset;
+			// 			return "translate(" + newdataL + ",0)";
+			// 		}
+			// 	});
 
-			drawLegend
-				.append("circle")
-				.attr("cx", radius)
-				.attr("cy", radius)
-				.attr("r", radius / 2)
-				.style("fill", (d, i) => colorsType[i]);
+			// drawLegend
+			// 	.append("circle")
+			// 	.attr("cx", radius)
+			// 	.attr("cy", radius)
+			// 	.attr("r", radius / 2)
+			// 	.style("fill", (d, i) => colorsType[i]);
 
-			drawLegend
-				.append("text")
-				.attr("x", radius + radius)
-				.attr("y", radius * 1.5)
-				.text((d) => d)
-				.attr("class", "textselected")
-				.style("text-anchor", "start");
+			// drawLegend
+			// 	.append("text")
+			// 	.attr("x", radius + radius)
+			// 	.attr("y", radius * 1.5)
+			// 	.text((d) => d)
+			// 	.attr("class", "textselected")
+			// 	.style("text-anchor", "start");
 		};
 		dots(data);
 	};
