@@ -92,7 +92,7 @@ const createChart = async () => {
 			height: size * 0.33,
 			margin: {
 				top: 15,
-				right: 15,
+				right: 60,
 				bottom: 60,
 				left: 200
 			}
