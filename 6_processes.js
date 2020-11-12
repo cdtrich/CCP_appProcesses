@@ -51,8 +51,8 @@ const createChart = async () => {
 		{
 			title: "North Korea",
 			label: 5,
-			group: "N/A",
-			status: "observer"
+			group: "n/a",
+			status: "none"
 		},
 		{
 			title: "Iran",
@@ -163,15 +163,7 @@ const createChart = async () => {
 
 		//////////////////////////// colors ///////////////////////////////////////
 
-		const colorsType = [
-			"#113655",
-			// "#f28c00",
-			"#3f8ca5",
-			// "#fab85f",
-			"#99d4e3"
-			// "#fed061"
-		];
-
+		const colorsType = ["#113655", "#113655", "#aaaaaa", "#5b8ea7"];
 		//////////////////////////// col var ///////////////////////////////////////
 
 		var dataType = _.chain(data)
@@ -179,10 +171,11 @@ const createChart = async () => {
 			.uniq()
 			.value();
 
-		var xValue = _.chain(data)
-			.map((d) => xAccessor(d))
-			.uniq()
-			.value();
+		// var xValue = _.chain(data)
+		// 	.map((d) => xAccessor(d))
+		// 	.uniq()
+		// 	.value();
+		var xValue = ["G7", "G20", "GGE", "LAS", "OAS", "OSCE", "SCO", "n/a"];
 
 		var yValue = _.chain(data)
 			.map((d) => yAccessor(d))
