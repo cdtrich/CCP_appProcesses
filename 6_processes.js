@@ -24,46 +24,71 @@ const createChart = async () => {
 	//////////////////////////// data /////////////////////////////////////////
 
 	let data = [
-		{ title: "Russia", label: "(9 cases)", group: "G20", status: "member" },
-		{ title: "Russia", label: "(9 cases)", group: "GGE", status: "member" },
-		{ title: "Russia", label: "(9 cases)", group: "OSCE", status: "member" },
-		{ title: "Russia", label: "(9 cases)", group: "SCO", status: "member" },
+		{
+			title: "Russia",
+			label: "(9 operations )",
+			group: "G20",
+			status: "member"
+		},
+		{
+			title: "Russia",
+			label: "(9 operations )",
+			group: "GGE",
+			status: "member"
+		},
+		{
+			title: "Russia",
+			label: "(9 operations )",
+			group: "OSCE",
+			status: "participant"
+		},
+		{
+			title: "Russia",
+			label: "(9 operations )",
+			group: "SCO",
+			status: "member"
+		},
 		{
 			title: "North Korea",
-			label: "(5 cases)",
+			label: 5,
 			group: "N/A",
 			status: "observer"
 		},
-		{ title: "Iran", label: "(4 cases)", group: "SCO", status: "observer" },
+		{
+			title: "Iran",
+			label: "(4 operations )",
+			group: "SCO",
+			status: "observer"
+		},
 		{
 			title: "United States",
-			label: "(4 cases)",
+			label: "(4 operations )",
 			group: "G20",
 			status: "member"
 		},
 		{
 			title: "United States",
-			label: "(4 cases)",
+			label: "(4 operations )",
 			group: "G7",
 			status: "member"
 		},
 		{
 			title: "United States",
-			label: "(4 cases)",
+			label: "(4 operations )",
 			group: "GGE",
 			status: "member"
 		},
 		{
 			title: "United States",
-			label: "(4 cases)",
+			label: "(4 operations )",
 			group: "OAS",
 			status: "member"
 		},
 		{
 			title: "United States",
-			label: "(4 cases)",
+			label: "(4 operations )",
 			group: "OSCE",
-			status: "member"
+			status: "participant"
 		},
 		{
 			title: "United Arab Emirates",
