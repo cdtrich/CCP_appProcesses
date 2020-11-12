@@ -82,12 +82,14 @@ const createChart = async () => {
 
 	const update = () => {
 		//////////////////////////// sizes ///////////////////////////////////
+		const el = document.getElementById("col");
+		// const size = 795;
 		// const size = d3.min([window.innerWidth * 0.99, window.innerHeight * 0.99]);
-		const size = 1100;
+		const size = el.clientWidth * 0.99;
 
 		let dimensions = {
 			width: size,
-			height: (size * 0.33) / 2,
+			height: size * 0.33,
 			margin: {
 				top: 15,
 				right: 15,
