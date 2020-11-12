@@ -24,10 +24,10 @@ const createChart = async () => {
 	//////////////////////////// data /////////////////////////////////////////
 
 	let data = [
-		{ title: "Russia", label: "(9 cases)", group: "G20", status: "yes" },
-		{ title: "Russia", label: "(9 cases)", group: "GGE", status: "yes" },
-		{ title: "Russia", label: "(9 cases)", group: "OSCE", status: "yes" },
-		{ title: "Russia", label: "(9 cases)", group: "SCO", status: "yes" },
+		{ title: "Russia", label: "(9 cases)", group: "G20", status: "member" },
+		{ title: "Russia", label: "(9 cases)", group: "GGE", status: "member" },
+		{ title: "Russia", label: "(9 cases)", group: "OSCE", status: "member" },
+		{ title: "Russia", label: "(9 cases)", group: "SCO", status: "member" },
 		{
 			title: "North Korea",
 			label: "(5 cases)",
@@ -35,21 +35,41 @@ const createChart = async () => {
 			status: "observer"
 		},
 		{ title: "Iran", label: "(4 cases)", group: "SCO", status: "observer" },
-		{ title: "United States", label: "(4 cases)", group: "G20", status: "yes" },
-		{ title: "United States", label: "(4 cases)", group: "G7", status: "yes" },
-		{ title: "United States", label: "(4 cases)", group: "GGE", status: "yes" },
-		{ title: "United States", label: "(4 cases)", group: "OAS", status: "yes" },
+		{
+			title: "United States",
+			label: "(4 cases)",
+			group: "G20",
+			status: "member"
+		},
+		{
+			title: "United States",
+			label: "(4 cases)",
+			group: "G7",
+			status: "member"
+		},
+		{
+			title: "United States",
+			label: "(4 cases)",
+			group: "GGE",
+			status: "member"
+		},
+		{
+			title: "United States",
+			label: "(4 cases)",
+			group: "OAS",
+			status: "member"
+		},
 		{
 			title: "United States",
 			label: "(4 cases)",
 			group: "OSCE",
-			status: "yes"
+			status: "member"
 		},
 		{
 			title: "United Arab Emirates",
 			label: "(1 case)",
 			group: "LAS",
-			status: "yes"
+			status: "member"
 		}
 	];
 
@@ -92,7 +112,7 @@ const createChart = async () => {
 			height: size * 0.33,
 			margin: {
 				top: 15,
-				right: 60,
+				right: 200,
 				bottom: 60,
 				left: 200
 			}
@@ -251,7 +271,19 @@ const createChart = async () => {
 				d3.select(".tooltip")
 					.style("left", mouseX + "px")
 					.style("top", mouseY + "px")
-					.text(d.title + " " + d.label);
+					.html(
+						"<b>" +
+							d.title +
+							"</b>" +
+							"<br>" +
+							d.group +
+							" " +
+							d.status +
+							"<br>" +
+							"<i>" +
+							d.label +
+							"</i>"
+					);
 			});
 
 			dots.on("mouseleave", function (d) {
